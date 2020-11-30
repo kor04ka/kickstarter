@@ -14,6 +14,7 @@
 
 	$query = mysqli_query($connect, 'SELECT * FROM projects');
 
+	$res = $query->fetch_assoc();
 ?>
 <body>
 	
@@ -28,7 +29,7 @@
 			<p>#BlackLivesMatter</p>
 		</div>
 		<div class="col-2 text-left pt-3">
-			<a href="" > <i class="fa fa-search"></i> Search</a>
+			<a href="" class="mr-3"> <i class="fa fa-search"></i> Search</a>
 			<a href="acc.php"><img src="lk.png" class="rounded-circle" ></a>
 
 		</div>
@@ -42,14 +43,16 @@
 		<?php 
 			while ($row = mysqli_fetch_assoc($query)) {
 		?>
-			<div class="col-4" style="display: block">
-				<div style="">
-					<img class="w-100" src="<?php echo $row['img']?>" alt="">
+			<div class="col-4" style="display: block; height: 700px;">
+				<div style="height: 100%;">
+					<div style="background-image: url(<?php echo $row['img']?>); width: 100%; height: 40.2%; background-size: cover;"></div>
 					<p></p>
-					<h2 class=""><?php echo $row['title']?></h2>
-					<p><?php echo $row['description']?></p>
+					<div>
+						<h2 class=""><?php echo $row['title']?></h2>
+						<p><?php echo $row['description']?></p>
+					</div>
 				</div>
-				<div style="">
+				<div style="position: absolute; bottom: 5%;">
 					<h4>by <?php echo $row['user']?></h4>
 					<p><?php echo $row['place']?></p>
 					<p>Goal $<?php echo $row['goal']?></p>
